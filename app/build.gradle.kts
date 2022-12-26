@@ -22,7 +22,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = Versions.composeCompiler
     }
-
+/*
     signingConfigs {
         getByName("debug") {
             keyAlias = "androiddebugkey"
@@ -31,7 +31,7 @@ android {
             storePassword = "android"
         }
     }
-
+*/
     buildTypes {
         getByName("release") {
             isMinifyEnabled = true
@@ -101,7 +101,7 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     testImplementation("androidx.test:core:1.4.0")
     testImplementation("org.robolectric:robolectric:4.7.3")
-    androidTestImplementation("androidx.test:runner:1.4.0")
+//    androidTestImplementation("androidx.test:runner:1.4.0")
 
     implementation(project(":common"))
 }
