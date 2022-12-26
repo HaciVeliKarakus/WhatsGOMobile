@@ -23,6 +23,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import io.bordo.whatsgomobile.ui.components.BackSection
 import io.bordo.whatsgomobile.ui.components.WGButton
 
 @Composable
@@ -36,7 +37,7 @@ fun PasswordConfirm(
         modifier = Modifier.fillMaxSize()
     ) {
         Spacer(modifier = Modifier.height(24.dp))
-        BackSection(onBackClick)
+        BackSection(onBackClick = { onBackClick() })
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -45,14 +46,14 @@ fun PasswordConfirm(
         ) {
             Spacer(modifier = Modifier.height(16.dp))
             InformationSection2()
-            Spacer(modifier = Modifier.height(16.dp))
             PasswordSection()
             Spacer(modifier = Modifier.height(16.dp))
             PasswordConfirmSection()
             Spacer(modifier = Modifier.height(16.dp))
             WGButton(
                 text = "Devam Et",
-                onClick = { onConfirmClick() }
+                onClick = { onConfirmClick() },
+                bottomSpacer = 16.dp
             )
         }
     }

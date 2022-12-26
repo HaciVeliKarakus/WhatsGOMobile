@@ -45,42 +45,21 @@ import io.bordo.whatsgomobile.ui.viewmodel.player.PlayerViewModel
 import org.koin.androidx.compose.koinViewModel
 
 
-//private val productService by lazy {
-//    ProductService.create()
-//}
-
-
 @Composable
-fun ProductScreen(
-    viewModel: PlayerViewModel = koinViewModel()
-) {
-    val playerList = viewModel.state.value
-//    val leagueName by viewModel.playerList.collectAsState("")
+fun ProductScreen() {
+    val viewModel: PlayerViewModel = koinViewModel()
+    val playerList = viewModel.state.value.playerList
 
-//    val leagues by viewModel.leagues.collectAsState(emptyList())
-//
-//    val isRefreshing by viewModel.isRefreshing.collectAsState()
-//
-//    LaunchedEffect(leagues) {
-//        if (leagues.isNotEmpty()) {
-//            viewModel.getLeagueStandings()
-//        }
-//    }
 
     Scaffold(
         topBar = {
             ShoppingTopSection()
-//            TopAppBar(title = { Text("Product") })
         }) {
-//        SwipeRefresh(
-//            state = rememberSwipeRefreshState(isRefreshing),
-//            onRefresh = { viewModel.getLeagueStandings() },
-//        ) {
         LazyColumn {
             item {
-                Chips(playerList.playerList)
+                Chips(playerList)
             }
-            items(items = playerList.playerList) { player ->
+            items(items = playerList) { player ->
                 ProductContentSection(player)
             }
         }
@@ -105,9 +84,7 @@ fun ProductScreen(
 
 
 @Composable
-fun ProductContentSection(
-    player: Player
-) {
+fun ProductContentSection(player: Player) {
 
     Row(
         modifier = Modifier.padding(top = 4.dp),

@@ -15,12 +15,13 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun VerticalDivider(
     color: Color = MaterialTheme.colors.onSurface.copy(alpha = 0.12f),
-    thickness: Dp = 1.dp
+    thickness: Dp = 1.dp,
+    height: Dp = 20.dp
 ) {
 
     Box(
         modifier = Modifier
-            .height(20.dp)
+            .height(height)
             .width(thickness)
             .background(color = color)
     )

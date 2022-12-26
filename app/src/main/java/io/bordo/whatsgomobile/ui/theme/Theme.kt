@@ -37,7 +37,7 @@ private val LightColorPalette = lightColors(
 )
 
 @Composable
-fun FantasyPremierLeagueTheme(
+fun WhatsGOMobileTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {

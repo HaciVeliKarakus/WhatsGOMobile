@@ -10,9 +10,7 @@ import io.bordo.whatsgomobile.ui.screen.login.PasswordConfirm
 import io.bordo.whatsgomobile.ui.screen.login.Successful
 
 
-fun NavGraphBuilder.authNavGraph(
-    navController: NavHostController
-) {
+fun NavGraphBuilder.authNavGraph(navController: NavHostController) {
     navigation(
         route = WGGraph.AUTHENTICATION,
         startDestination = LoginScreens.Login.route
@@ -20,7 +18,7 @@ fun NavGraphBuilder.authNavGraph(
         composable(route = LoginScreens.Login.route) {
             LoginPage(
                 onLoginClick = {
-//                    navController.popBackStack()
+                    navController.popBackStack()
                     navController.navigate(WGGraph.DASHBOARD)
                 },
                 onForgetClick = {
@@ -61,8 +59,6 @@ fun NavGraphBuilder.authNavGraph(
 
 
 sealed class LoginScreens(val route: String) {
-    object Splash : LoginScreens("splash_screen")
-
     object Login : LoginScreens("login_screen")
     object MailConfirm : LoginScreens("forget_password_mail")
     object PasswordConfirm : LoginScreens("password_confirm")

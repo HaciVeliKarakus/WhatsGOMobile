@@ -205,10 +205,10 @@ fun MessageTopNavigation(
     navController: NavHostController
 ) {
     val screens = listOf(
-        MessageTopBarScreen.Waiting,
-        MessageTopBarScreen.New,
-        MessageTopBarScreen.Active,
-        MessageTopBarScreen.Group,
+        MessageTopBarScreen.WaitingMessageScreen,
+        MessageTopBarScreen.NewMessageScreen,
+        MessageTopBarScreen.ActiveMessageScreen,
+        MessageTopBarScreen.GroupMessageScreen,
     )
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination

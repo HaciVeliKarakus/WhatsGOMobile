@@ -30,9 +30,8 @@ import io.bordo.whatsgomobile.ui.viewmodel.player.PlayerViewModel
 
 
 @Composable
-fun MainScreen(viewModel: PlayerViewModel) {
+fun MainScreen() {
     val navController = rememberNavController()
-    //val coroutineScope = rememberCoroutineScope()
 
     var showBottomBar by rememberSaveable { mutableStateOf(true) }
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -46,16 +45,12 @@ fun MainScreen(viewModel: PlayerViewModel) {
     )
 
     showBottomBar = navBackStackEntry?.destination?.route in screens.map { it.route }
-//    val leagues by viewModel.leagues.collectAsState()
-    //coroutineScope.launch {
-    // TEMP to set a particular league until settings screen added
-    //viewModel.updateLeagues(listOf(""))
-    //}
+
     Scaffold(
         bottomBar = { if (showBottomBar) BottomBar(navController = navController) }
     ) {
         Box(modifier = Modifier.padding(it)) {
-            DashboardNavGraph(navController,viewModel)
+            DashboardNavGraph(navController)
         }
     }
 }

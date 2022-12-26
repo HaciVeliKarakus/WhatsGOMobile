@@ -5,5 +5,5 @@ import io.bordo.common.domain.model.Player
 data class PlayerListState(
     val isLoading: Boolean = false,
     val playerList: List<Player> = emptyList(),
-    val error: String = ""
+    val error: String? = null
 )

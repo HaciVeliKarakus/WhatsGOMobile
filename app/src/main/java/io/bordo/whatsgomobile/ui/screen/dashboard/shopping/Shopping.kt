@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color.Companion.LightGray
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
@@ -26,11 +27,11 @@ import io.bordo.whatsgomobile.ui.theme.primaryColor
 import io.bordo.whatsgomobile.ui.viewmodel.player.PlayerViewModel
 import org.koin.androidx.compose.koinViewModel
 
-
+@Preview
 @Composable
-fun ShoppingScreen(viewModel: PlayerViewModel = koinViewModel()) {
-
-    val playerList = viewModel.state.value
+fun ShoppingScreen() {
+    val viewModel: PlayerViewModel = koinViewModel()
+    val playerList = viewModel.state.value.playerList
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -39,12 +40,11 @@ fun ShoppingScreen(viewModel: PlayerViewModel = koinViewModel()) {
         LazyColumn {
             item {
                 ShoppingTopSection()
-
             }
             item {
                 TotalMonitorSection()
             }
-            items(items = playerList.playerList) { player ->
+            items(items = playerList) { player ->
                 ContentListSection(player)
             }
         }
@@ -53,7 +53,6 @@ fun ShoppingScreen(viewModel: PlayerViewModel = koinViewModel()) {
 
 @Composable
 fun ContentListSection(player: Player) {
-
     Row(
         modifier = Modifier.padding(4.dp),
         horizontalArrangement = Arrangement.spacedBy(10.dp),

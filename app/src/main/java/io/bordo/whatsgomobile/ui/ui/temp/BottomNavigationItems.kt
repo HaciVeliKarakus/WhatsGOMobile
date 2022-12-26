@@ -1,12 +1,5 @@
 package io.bordo.whatsgomobile.ui.ui.temp
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.material.icons.filled.List
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.ui.graphics.vector.ImageVector
-import io.bordo.whatsgomobile.ui.ui.main.Screen
-
 
 //data class BottomNavigationitem(
 //    val route: String,

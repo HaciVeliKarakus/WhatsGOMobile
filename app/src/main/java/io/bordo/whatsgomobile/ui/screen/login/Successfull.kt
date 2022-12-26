@@ -16,7 +16,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -62,7 +61,8 @@ fun Successful(
         WGButton(
             text = "WhatsGo'ya Giriş",
             iconId = R.drawable.ic_logo,
-            onClick = { onClickSuccess() }
+            onClick = { onClickSuccess() },
+            bottomSpacer = 16.dp
         )
     }
 }

@@ -1,8 +1,6 @@
-package io.bordo.whatsgomobile.ui.ui.main
+package io.bordo.whatsgomobile.ui.navigation
 
-sealed class Screen(
-    val route: String
-) {
+sealed class Screen(val route: String) {
 
     // login screens
     object LoginMainScreen : Screen(route = "LoginMainScreen")
@@ -25,5 +23,6 @@ object WGGraph {
     const val AUTHENTICATION = "auth_graph"
     const val HOME = "home_graph"
     const val MESSAGE = "message_graph"
+    const val DASHBOARD = "dashboard_graph"
 
 }

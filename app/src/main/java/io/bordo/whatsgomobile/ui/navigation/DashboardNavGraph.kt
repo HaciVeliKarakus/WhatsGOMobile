@@ -1,27 +1,23 @@
 package io.bordo.whatsgomobile.ui.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import io.bordo.whatsgomobile.R
-import io.bordo.whatsgomobile.ui.viewmodel.player.PlayerViewModel
 import io.bordo.whatsgomobile.ui.screen.dashboard.home.DashboardHomeScreen
 import io.bordo.whatsgomobile.ui.screen.dashboard.message.DashboardMessageScreen
 import io.bordo.whatsgomobile.ui.screen.dashboard.message.tabs.ChatScreen
 import io.bordo.whatsgomobile.ui.screen.dashboard.product.ProductScreen
 import io.bordo.whatsgomobile.ui.screen.dashboard.shopping.ShoppingScreen
-import io.bordo.whatsgomobile.ui.ui.main.Screen
+import io.bordo.whatsgomobile.ui.viewmodel.player.PlayerViewModel
+import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
-fun DashboardNavGraph(
-    navController: NavHostController,
-    viewModel: PlayerViewModel
-) {
+fun DashboardNavGraph(navController: NavHostController) {
 
     NavHost(
         navController = navController,
@@ -43,34 +39,26 @@ fun DashboardNavGraph(
         composable(route = DashboardBottomBarScreen.ShoppingCart.route) {
             ShoppingScreen()
         }
-        message(navController,viewModel)
-    }
-}
 
-
-fun NavGraphBuilder.message(
-    navController: NavHostController,
-    viewModel: PlayerViewModel,
-) {
-
-    composable(
-        Screen.MessageDetailScreen.route + "/{playerID}",
-        arguments = listOf(navArgument("playerID") { type = NavType.IntType })
-    ) { navBackStackEntry ->
-        val playerId: Int? = navBackStackEntry.arguments?.getInt("playerID")
-        playerId?.let {
-            val player = viewModel.getPlayer(playerId)
-            player?.let {
-                ChatScreen(player) { navController.popBackStack() }
+        composable(
+            route = Screen.MessageDetailScreen.route + "/{playerID}",
+            arguments = listOf(navArgument("playerID") { type = NavType.IntType })
+        ) { navBackStackEntry ->
+            val viewModel = koinViewModel<PlayerViewModel>()
+            val playerId: Int? = navBackStackEntry.arguments?.getInt("playerID")
+            playerId?.let {
+                val player = viewModel.getPlayer(playerId)
+                player?.let {
+                    ChatScreen(player) { navController.popBackStack() }
+                }
             }
         }
     }
 }
 
-sealed class DashboardBottomBarScreen(
-    val route: String,
-    val icon: Int
-) {
+
+sealed class DashboardBottomBarScreen(val route: String, val icon: Int) {
+
     object Home : DashboardBottomBarScreen(
         route = "home",
         icon = R.drawable.ic_nav_home
@@ -92,22 +80,10 @@ sealed class DashboardBottomBarScreen(
     )
 }
 
-sealed class MessageTopBarScreen(
-    val route: String
-) {
-    object Waiting : MessageTopBarScreen(
-        route = "waiting_message"
-    )
+sealed class MessageTopBarScreen(val route: String) {
 
-    object New : MessageTopBarScreen(
-        route = "new_message"
-    )
-
-    object Active : MessageTopBarScreen(
-        route = "active_message"
-    )
-
-    object Group : MessageTopBarScreen(
-        route = "groups_message"
-    )
+    object WaitingMessageScreen : MessageTopBarScreen(route = "waiting_message")
+    object NewMessageScreen : MessageTopBarScreen(route = "new_message")
+    object ActiveMessageScreen : MessageTopBarScreen(route = "active_message")
+    object GroupMessageScreen : MessageTopBarScreen(route = "groups_message")
 }

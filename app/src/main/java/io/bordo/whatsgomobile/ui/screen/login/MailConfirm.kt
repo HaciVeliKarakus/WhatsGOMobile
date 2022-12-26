@@ -1,14 +1,12 @@
 package io.bordo.whatsgomobile.ui.screen.login
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Icon
 import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -17,11 +15,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextRange
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import io.bordo.whatsgomobile.ui.components.BackSection
 import io.bordo.whatsgomobile.ui.components.WGButton
 
 
@@ -30,67 +29,68 @@ fun MailConfirm(
     onBackClick: () -> Unit,
     onConfirmClick: () -> Unit
 ) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-        modifier = Modifier.fillMaxSize()
+    Scaffold(
+        topBar = { BackSection(onBackClick=onBackClick) },
     ) {
-        Spacer(modifier = Modifier.height(24.dp))
-        BackSection(onBackClick)
-        Column(
+        LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(horizontal = 24.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Spacer(modifier = Modifier.height(16.dp))
-            InformationSection()
-            Spacer(modifier = Modifier.height(16.dp))
-            EmailSection()
-            Spacer(modifier = Modifier.height(16.dp))
-            WGButton(
-                text = "Devam Et",
-                onClick = { onConfirmClick() }
-            )
+            item {
+                InformationSection(bottomSpacer = 16.dp)
+            }
+            item {
+                EmailSection()
+            }
+            item {
+                WGButton(
+                    text = "Devam Et",
+                    onClick = { onConfirmClick() },
+                    bottomSpacer = 16.dp
+                )
+            }
         }
     }
+
+//    Column(
+//        horizontalAlignment = Alignment.CenterHorizontally,
+//        verticalArrangement = Arrangement.Center,
+//        modifier = Modifier.fillMaxSize()
+//    ) {
+//
+//
+//    }
 }
 
 @Composable
-fun InformationSection() {
+fun InformationSection(
+    topSpacer: Dp = 16.dp,
+    centerSpacer: Dp = 16.dp,
+    bottomSpacer: Dp = 16.dp
+) {
+    Spacer(modifier = Modifier.height(topSpacer))
     Column(modifier = Modifier.padding(horizontal = 24.dp)) {
         Text(
             text = "Şifremi Unuttum",
             fontSize = 24.sp,
-//            fontWeight = FontWeight.Light,
         )
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(centerSpacer))
         Text(
             text = "E-posta adresinizi aşağıya yazın, size şifrenizi sıfırlamanız için bir bağlantı göndereceğiz.",
             fontSize = 12.sp,
-//            fontWeight = FontWeight.Thin,
             color = Color.LightGray,
             lineHeight = 20.sp
         )
+        Spacer(modifier = Modifier.height(bottomSpacer))
+
     }
 }
 
-@Composable
-fun BackSection(onBackClick: () -> Unit) {
-    Row {
-        Icon(
-            imageVector = Icons.Default.ArrowBack,
-            contentDescription = "Arrow Back",
-            modifier = Modifier
-                .clickable { onBackClick() }
-                .padding(horizontal = 24.dp),
-        )
-        Spacer(modifier = Modifier.weight(1f))
-    }
-}
 
 @Composable
-private fun EmailSection() {
+private fun EmailSection(bottomSpacer: Dp = 16.dp) {
     val textFieldState = remember { mutableStateOf(TextFieldValue("")) }
 
     OutlinedTextField(value = textFieldState.value,
@@ -112,4 +112,6 @@ private fun EmailSection() {
                 )
             }
         })
+
+    Spacer(modifier = Modifier.height(bottomSpacer))
 }
