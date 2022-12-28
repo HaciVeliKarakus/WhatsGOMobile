@@ -20,8 +20,9 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import io.bordo.whatsgomobile.ui.components.BackSection
-import io.bordo.whatsgomobile.ui.components.WGButton
+import io.bordo.whatsgomobile.ui.components.atoms.BackSection
+import io.bordo.whatsgomobile.ui.components.atoms.AtomButton
+import io.bordo.whatsgomobile.ui.components.atoms.AtomSpacer
 
 
 @Composable
@@ -45,11 +46,11 @@ fun MailConfirm(
                 EmailSection()
             }
             item {
-                WGButton(
+                AtomButton(
                     text = "Devam Et",
                     onClick = { onConfirmClick() },
-                    bottomSpacer = 16.dp
                 )
+                AtomSpacer(height = 16.dp,)
             }
         }
     }

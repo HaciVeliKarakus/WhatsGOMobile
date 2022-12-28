@@ -23,8 +23,9 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import io.bordo.whatsgomobile.ui.components.BackSection
-import io.bordo.whatsgomobile.ui.components.WGButton
+import io.bordo.whatsgomobile.ui.components.atoms.AtomButton
+import io.bordo.whatsgomobile.ui.components.atoms.AtomSpacer
+import io.bordo.whatsgomobile.ui.components.atoms.BackSection
 
 @Composable
 fun PasswordConfirm(
@@ -49,12 +50,12 @@ fun PasswordConfirm(
             PasswordSection()
             Spacer(modifier = Modifier.height(16.dp))
             PasswordConfirmSection()
-            Spacer(modifier = Modifier.height(16.dp))
-            WGButton(
+            AtomSpacer(height = 16.dp,)
+            AtomButton(
                 text = "Devam Et",
                 onClick = { onConfirmClick() },
-                bottomSpacer = 16.dp
             )
+            AtomSpacer(height = 16.dp,)
         }
     }
 }

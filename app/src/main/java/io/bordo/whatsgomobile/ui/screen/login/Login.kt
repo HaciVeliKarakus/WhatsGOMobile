@@ -7,13 +7,17 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import io.bordo.whatsgomobile.R
-import io.bordo.whatsgomobile.ui.components.*
-import io.bordo.whatsgomobile.ui.components.edittext.WGEmailBox
+import io.bordo.whatsgomobile.ui.components.atoms.AtomButton
+import io.bordo.whatsgomobile.ui.components.atoms.AtomDivider
+import io.bordo.whatsgomobile.ui.components.atoms.AtomImage
+import io.bordo.whatsgomobile.ui.components.atoms.AtomSpacer
+import io.bordo.whatsgomobile.ui.components.molecules.MoleculeEmailBox
+import io.bordo.whatsgomobile.ui.components.widgets.MoleculePasswordBox
 import io.bordo.whatsgomobile.ui.theme.whatsappGreen
 
 
@@ -22,57 +26,53 @@ fun LoginPage(
     onLoginClick: () -> Unit,
     onForgetClick: () -> Unit
 ) {
-    Scaffold(
-        topBar = { BackSection(onBackClick = {}) }
-    ) {
+    Scaffold {
         LazyColumn(
-            horizontalAlignment = Alignment.CenterHorizontally,
+            horizontalAlignment = CenterHorizontally,
             verticalArrangement = Arrangement.Center,
             modifier = Modifier.fillMaxSize()
         ) {
             item {
-                WGLogo(bottomSpacer = 32.dp)
+                AtomImage(id = R.drawable.logo_name_main)
+                AtomSpacer(height = 32.dp,)
             }
             item {
-                WGButton(
+                AtomButton(
                     text = "Whatsapp ile Giriş",
                     iconId = R.drawable.ic_whatsapp_24,
                     backColor = whatsappGreen,
-                    bottomSpacer = 16.dp,
                     onClick = {}
                 )
-                WGButton(
+                AtomSpacer(height = 16.dp,)
+                AtomButton(
                     text = "Google ile Giriş",
-                    R.drawable.ic_google,
+                    iconId = R.drawable.ic_google,
                     textColor = Color.Black,
                     backColor = Color.White,
-                    bottomSpacer = 16.dp,
                     onClick = {}
                 )
             }
             item {
-                WGDivider(
-                    centerText = "VEYA",
-                    topSpacer = 26.dp,
-                    bottomSpacer = 26.dp
-                )
+                AtomSpacer(height = 26.dp,)
+                AtomDivider(centerText = "VEYA")
+                AtomSpacer(height = 26.dp,)
             }
             item {
-                WGEmailBox()
-                WGPasswordBox(bottomSpace = 32.dp)
+                MoleculeEmailBox()
+                MoleculePasswordBox(hintText = "Şifreniz")
+                AtomSpacer(height = 32.dp,)
             }
             item {
-                WGButton(
+                AtomButton(
                     text = "Giriş Yap",
-                    onClick = { onLoginClick() },
-                    bottomSpacer = 16.dp
+                    onClick = { onLoginClick() }
                 )
                 TextButton(
                     onClick = { onForgetClick() },
                 ) {
                     Text(text = "Şifremi Unuttum")
                 }
-                Spacer16H()
+                AtomSpacer()
             }
         }
     }

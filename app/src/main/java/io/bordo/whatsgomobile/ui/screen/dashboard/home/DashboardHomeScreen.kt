@@ -22,7 +22,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import io.bordo.common.domain.model.Player
 import io.bordo.whatsgomobile.R
-import io.bordo.whatsgomobile.ui.components.*
+import io.bordo.whatsgomobile.ui.components.atoms.BigText
+import io.bordo.whatsgomobile.ui.components.molecules.MoleculeCombobox
+import io.bordo.whatsgomobile.ui.components.atoms.SmallText
+import io.bordo.whatsgomobile.ui.components.widgets.WidgetUserStatus
+import io.bordo.whatsgomobile.ui.components.widgets.WidgetUserDetail
+import io.bordo.whatsgomobile.ui.components.widgets.WidgetSurvey
 
 
 @Composable
@@ -57,7 +62,7 @@ fun DashboardHomeScreen() {
                         fontWeight = FontWeight.Light
                     )
                     Spacer(modifier = Modifier.weight(1f))
-                    ComboboxWidget()
+                    MoleculeCombobox()
                 }
 //                TextField(
 //                    singleLine = true,
@@ -401,7 +406,7 @@ fun DelegateSection(
         ) {
 
             Row {
-                UserDetailWidget(
+                WidgetUserDetail(
                     player.photoUrl,
                     isDataLoading = isDataLoading,
                     userName = player.name,
@@ -411,7 +416,7 @@ fun DelegateSection(
 
                 Spacer(modifier = Modifier.weight(1f))
 
-                UserStatusWidget(isOnline = false)
+                WidgetUserStatus(isOnline = false,{})
             }
             Divider()
         }
@@ -512,13 +517,13 @@ fun SurveySection() {
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            SurveyWidget(text = "Evet", value = 17)
+            WidgetSurvey(text = "Evet", value = 17)
             Spacer(modifier = Modifier.height(10.dp))
 
-            SurveyWidget(text = "Hayır", value = 79)
+            WidgetSurvey(text = "Hayır", value = 79)
             Spacer(modifier = Modifier.height(10.dp))
 
-            SurveyWidget(text = "Kararsız", value = 44)
+            WidgetSurvey(text = "Kararsız", value = 44)
         }
     }
 }

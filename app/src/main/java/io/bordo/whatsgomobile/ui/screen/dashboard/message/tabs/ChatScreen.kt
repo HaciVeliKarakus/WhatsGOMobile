@@ -13,9 +13,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import io.bordo.common.domain.model.Player
 import io.bordo.common.domain.model.PlayerPastHistory
-import io.bordo.whatsgomobile.ui.components.chat.ChatInput
-import io.bordo.whatsgomobile.ui.components.chat.ChatTopBar
-import io.bordo.whatsgomobile.ui.components.chat.SentMessageRow
+import io.bordo.whatsgomobile.ui.ui.temp.chat.ChatInput
+import io.bordo.whatsgomobile.ui.ui.temp.chat.ChatTopBar
+import io.bordo.whatsgomobile.ui.ui.temp.chat.SentMessageRow
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*

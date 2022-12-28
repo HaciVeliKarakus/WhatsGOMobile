@@ -14,13 +14,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import io.bordo.whatsgomobile.R
-import io.bordo.whatsgomobile.ui.components.WGButton
+import io.bordo.whatsgomobile.ui.components.atoms.AtomButton
+import io.bordo.whatsgomobile.ui.components.atoms.AtomSpacer
 import io.bordo.whatsgomobile.ui.theme.primaryColor
 
 
@@ -34,7 +34,6 @@ fun Successful(
         verticalArrangement = Arrangement.Center
     ) {
         val visible by remember { mutableStateOf(true) }
-        val mContext = LocalContext.current
         AnimatedVisibility(
             visible = visible,
             enter = fadeIn(animationSpec = tween(durationMillis = 500)),
@@ -58,11 +57,11 @@ fun Successful(
             textAlign = TextAlign.Center
         )
         Spacer(modifier = Modifier.height(32.dp))
-        WGButton(
+        AtomButton(
             text = "WhatsGo'ya Giriş",
             iconId = R.drawable.ic_logo,
             onClick = { onClickSuccess() },
-            bottomSpacer = 16.dp
         )
+        AtomSpacer()
     }
 }
