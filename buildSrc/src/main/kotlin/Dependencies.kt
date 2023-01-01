@@ -18,7 +18,7 @@ object Versions {
     const val navCompose = "2.5.3"
     const val accompanist = "0.25.1"
     const val coilCompose = "2.1.0"
-    const val composeDesktop =  "1.2.0"
+//    const val composeDesktop =  "1.2.0"
 
     const val junit = "4.13"
 }
@@ -85,7 +85,6 @@ object Compose {
     const val accompanistSwipePlaceholder =
         "com.google.accompanist:accompanist-placeholder-material:${Versions.accompanist}"
 }
-
 
 
 
