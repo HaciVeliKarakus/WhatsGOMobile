@@ -6,10 +6,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.Card
+import androidx.compose.material.Divider
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -17,18 +17,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import io.bordo.common.domain.model.Player
 import io.bordo.whatsgomobile.R
-import io.bordo.whatsgomobile.ui.components.atoms.AtomDivider
-import io.bordo.whatsgomobile.ui.components.atoms.AtomSpacer
-import io.bordo.whatsgomobile.ui.components.atoms.AtomText
-import io.bordo.whatsgomobile.ui.components.widgets.WidgetCombobox
-import io.bordo.whatsgomobile.ui.components.widgets.WidgetSurvey
-import io.bordo.whatsgomobile.ui.components.widgets.WidgetUserDetail
-import io.bordo.whatsgomobile.ui.components.widgets.WidgetUserStatus
+import io.bordo.whatsgomobile.data.InfoPack
+import io.bordo.whatsgomobile.ui.components.*
+import io.bordo.whatsgomobile.ui.theme.PurpleMain
 
 
 @Composable
@@ -37,13 +34,21 @@ fun HomeScreen() {
     Scaffold(
         topBar = { TopSection() }
     ) {
-
         LazyColumn(modifier = Modifier.padding(it)) {
             item {
-                MessageSection()
+                WGMessagePanel(
+                    waitingMessageInfo = InfoPack(),
+                    activeMessageInfo = InfoPack(),
+                    newMessageInfo = InfoPack(),
+                    doneMessageInfo = InfoPack()
+                )
             }
             item {
-                SaleReportSection()
+                WGSaleReportPanel(
+                    InfoPack(),
+                    InfoPack(),
+                    InfoPack()
+                )
             }
             item {
                 OrderSection()
@@ -62,7 +67,7 @@ fun HomeScreen() {
                         fontWeight = FontWeight.Light
                     )
                     Spacer(modifier = Modifier.weight(1f))
-                    WidgetCombobox()
+                    WGCombobox()
                 }
 //                TextField(
 //                    singleLine = true,
@@ -115,176 +120,38 @@ fun HomeScreen() {
     }
 }
 
-
-//@Preview
 @Composable
-fun TopSection() {
-    Box(
+private fun TopSection() {
+    Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(64.dp)
+            .padding(horizontal = 16.dp)
+            .height(64.dp),
+        verticalAlignment = Alignment.CenterVertically
+
     ) {
-        Icon(
-            imageVector = Icons.Default.Home,
-            contentDescription = "home-logo",
-            modifier = Modifier
-                .align(Alignment.CenterStart)
-                .padding(horizontal = 20.dp)
+        WGIcon(
+            id = R.drawable.ic_nav_home,
+            tint = PurpleMain
         )
-        Text(
+        WGSpacer(width = 8.dp, height = 0.dp)
+        WGText(
             text = "WhatsGO Call Center",
             fontSize = 20.sp,
-            fontWeight = FontWeight.Light,
-            modifier = Modifier.align(Alignment.Center)
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center
         )
-
-        Icon(
-            modifier = Modifier
-                .align(Alignment.CenterEnd)
-                .padding(end = 24.dp),
-            imageVector = Icons.Default.Notifications,
-            contentDescription = "notifications"
+        Spacer(modifier = Modifier.weight(1f))
+        WGIcon(
+            id = R.drawable.ic_notification
         )
     }
 }
 
-//@Preview
-@Composable
-fun MessageSection() {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(10.dp),
-        elevation = 1.dp,
-        shape = RoundedCornerShape(10.dp)
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(10.dp)
-        ) {
-            Text(
-                text = "Mesajlar",
-                fontSize = 15.sp,
-                fontWeight = FontWeight.Light,
-            )
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(10.dp),
-                horizontalArrangement = Arrangement.SpaceAround
-            ) {
-                Column {
-                    Row {
-                        Image(
-                            painterResource(id = R.drawable.waiting),
-                            contentDescription = "waiting"
-                        )
-                        Column(modifier = Modifier.padding(horizontal = 10.dp)) {
-                            Text(text = "2")
-                            Text(text = "Bekleyen")
-                        }
-                    }
-                    AtomSpacer()
-                    Row {
-                        Image(
-                            painterResource(id = R.drawable.resource_new),
-                            contentDescription = "waiting"
-                        )
-                        Column(modifier = Modifier.padding(horizontal = 10.dp)) {
-                            Text(text = "8")
-                            Text(text = "Yeni")
-                        }
-                    }
-                }
-                Column {
-                    Row {
-                        Image(
-                            painterResource(id = R.drawable.active), contentDescription = "active"
-                        )
-                        Column(modifier = Modifier.padding(horizontal = 10.dp)) {
-                            Text(text = "37")
-                            Text(text = "Aktif")
-                        }
-                    }
-                    Spacer(modifier = Modifier.height(10.dp))
-                    Row {
-                        Image(
-                            painterResource(id = R.drawable.completed),
-                            contentDescription = "waiting"
-                        )
-                        Column(modifier = Modifier.padding(horizontal = 10.dp)) {
-                            Text(text = "414")
-                            Text(text = "Sonlanan")
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun SaleReportSection(
-    textColor: Color = Color.LightGray
-) {
-
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(10.dp),
-        elevation = 1.dp,
-        shape = RoundedCornerShape(10.dp)
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(10.dp)
-        ) {
-            Column {
-                Row(modifier = Modifier.padding(10.dp)) {
-                    Column {
-                        AtomText(
-                            text = "₺2.904,00"
-                        )
-                        AtomText(
-                            text = "Toplam Satış Tutarı",
-                            color = textColor
-                        )
-                    }
-                }
-                AtomDivider()
-                Row(modifier = Modifier.padding(10.dp)) {
-                    Column {
-                        AtomText(
-                            text = "138"
-                        )
-                        AtomText(
-                            text = "Toplam Sipariş",
-                            color = textColor
-                        )
-                    }
-                }
-                Divider()
-                Row(modifier = Modifier.padding(10.dp)) {
-                    Column {
-                        AtomText(
-                            text = "₺191,48"
-                        )
-                        AtomText(
-                            text = "Ortalama Sipariş Tutarı",
-                            color = textColor
-                        )
-                    }
-                }
-            }
-        }
-    }
-}
 
 //@Preview
 @Composable
-fun OrderSection() {
+private fun OrderSection() {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -373,7 +240,7 @@ fun OrderSection() {
 
 
 @Composable
-fun TotalOrderSection() {
+private fun TotalOrderSection() {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -405,7 +272,7 @@ fun TotalOrderSection() {
 
 
 @Composable
-fun DelegateSection(
+private fun DelegateSection(
     player: Player,
     isDataLoading: Boolean
 ) {
@@ -424,7 +291,7 @@ fun DelegateSection(
         ) {
 
             Row {
-                WidgetUserDetail(
+                WGUserDetail(
                     player.photoUrl,
                     isDataLoading = isDataLoading,
                     userName = player.name,
@@ -434,7 +301,7 @@ fun DelegateSection(
 
                 Spacer(modifier = Modifier.weight(1f))
 
-                WidgetUserStatus(isOnline = false, {})
+                WGUserStatus(isOnline = false, {})
             }
             Divider()
         }
@@ -533,13 +400,13 @@ fun SurveySection() {
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            WidgetSurvey(text = "Evet", value = 17)
+            WGSurvey(text = "Evet", value = 17)
             Spacer(modifier = Modifier.height(10.dp))
 
-            WidgetSurvey(text = "Hayır", value = 79)
+            WGSurvey(text = "Hayır", value = 79)
             Spacer(modifier = Modifier.height(10.dp))
 
-            WidgetSurvey(text = "Kararsız", value = 44)
+            WGSurvey(text = "Kararsız", value = 44)
         }
     }
 }
@@ -550,6 +417,5 @@ fun Modifier.asd(): Modifier = clip(CircleShape).background(Color.Red)
 @Preview
 @Composable
 private fun Preview() {
-    SurveySection()
-//    DashboardHomeScreen()
+    HomeScreen()
 }

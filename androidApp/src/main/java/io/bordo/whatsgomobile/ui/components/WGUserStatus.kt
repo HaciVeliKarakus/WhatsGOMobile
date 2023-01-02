@@ -1,4 +1,4 @@
-package io.bordo.whatsgomobile.ui.components.widgets
+package io.bordo.whatsgomobile.ui.components
 
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -7,6 +7,7 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import io.bordo.whatsgomobile.ui.theme.BtnGrayDark
@@ -16,7 +17,7 @@ import io.bordo.whatsgomobile.ui.theme.BtnGreenLight
 
 
 @Composable
-fun WidgetUserStatus(
+fun WGUserStatus(
     isOnline: Boolean,
     onClick: () -> Unit
 ) {
@@ -36,3 +37,10 @@ fun WidgetUserStatus(
     }
 }
 
+@Preview
+@Composable
+private fun Preview(){
+    WGUserStatus(isOnline = true) {
+        
+    }
+}

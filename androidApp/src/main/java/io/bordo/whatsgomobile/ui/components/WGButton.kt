@@ -1,4 +1,4 @@
-package io.bordo.whatsgomobile.ui.components.atoms
+package io.bordo.whatsgomobile.ui.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Row
@@ -19,7 +19,7 @@ import io.bordo.whatsgomobile.ui.theme.primaryColor
 
 
 @Composable
-fun AtomButton(
+fun WGButton(
     text: String,
     iconId: Int? = null,
     textColor: Color = Color.White,
@@ -48,10 +48,10 @@ fun AtomButton(
             .padding(horizontal = horizontalPadding)
     ) {
         iconId?.let {
-            AtomImage(id = iconId)
+            WGImage(id = iconId)
         }
 
-        AtomText(
+        WGText(
             text = " $text",
             color = textColor,
             fontWeight = FontWeight.Bold
@@ -63,6 +63,6 @@ fun AtomButton(
 @Composable
 fun PreviewAtomButton() {
     Row {
-        AtomButton(text = "preview")
+        WGButton(text = "preview")
     }
 }

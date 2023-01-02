@@ -1,4 +1,4 @@
-package io.bordo.whatsgomobile.ui.components.widgets
+package io.bordo.whatsgomobile.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -9,6 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
@@ -16,7 +17,7 @@ import com.google.accompanist.placeholder.placeholder
 import io.bordo.whatsgomobile.ui.theme.lowfidelitygray
 
 @Composable
-fun WidgetUserDetail(
+fun WGUserDetail(
     userProfileUrl: String,
     userName: String,
     userDate: String,
@@ -81,4 +82,16 @@ fun WidgetUserDetail(
             color = Color.LightGray
         )
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun Preview() {
+    WGUserDetail(
+        userProfileUrl = "",
+        userName = "preview name",
+        userDate = "preview date",
+        isOnline = false,
+        isDataLoading = false
+    )
 }

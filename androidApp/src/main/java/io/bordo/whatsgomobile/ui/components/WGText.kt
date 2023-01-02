@@ -1,4 +1,4 @@
-package io.bordo.whatsgomobile.ui.components.atoms
+package io.bordo.whatsgomobile.ui.components
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.sp
 import io.bordo.whatsgomobile.ui.theme.BlackMain
 
 @Composable
-fun AtomText(
+fun WGText(
     text: String,
     fontSize: TextUnit = 14.sp,
     fontWeight: FontWeight = FontWeight.Medium,
@@ -37,5 +37,5 @@ fun AtomText(
 @Preview(showSystemUi = true)
 @Composable
 private fun Preview() {
-    AtomText(text = "Preview")
+    WGText(text = "Preview")
 }

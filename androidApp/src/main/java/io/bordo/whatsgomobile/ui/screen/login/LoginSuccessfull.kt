@@ -17,10 +17,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import io.bordo.whatsgomobile.R
-import io.bordo.whatsgomobile.ui.components.atoms.AtomButton
-import io.bordo.whatsgomobile.ui.components.atoms.AtomImage
-import io.bordo.whatsgomobile.ui.components.atoms.AtomSpacer
-import io.bordo.whatsgomobile.ui.components.atoms.AtomText
+import io.bordo.whatsgomobile.ui.components.WGButton
+import io.bordo.whatsgomobile.ui.components.WGImage
+import io.bordo.whatsgomobile.ui.components.WGSpacer
+import io.bordo.whatsgomobile.ui.components.WGText
 import io.bordo.whatsgomobile.ui.theme.BlackMain
 import io.bordo.whatsgomobile.ui.theme.PurpleMain
 
@@ -40,16 +40,16 @@ fun Successful(
             enter = fadeIn(animationSpec = tween(durationMillis = 500)),
             exit = fadeOut(animationSpec = tween(durationMillis = 500))
         ) {
-            AtomImage(id = R.drawable.successful)
+            WGImage(id = R.drawable.successful)
         }
-        AtomText(
+        WGText(
             text = "Şifren Başarıyla Değiştirildi",
             fontSize = 24.sp,
             color = PurpleMain,
             fontWeight = FontWeight.Bold
         )
-        AtomSpacer()
-        AtomText(
+        WGSpacer()
+        WGText(
             text = "Hesabınıza yeni oluşturduğunuz şifrenizi kullanarak yeniden giriş yapmayı deneyebilirsiniz.",
             fontSize = 16.sp,
             color = BlackMain,
@@ -57,12 +57,12 @@ fun Successful(
             textAlign = TextAlign.Center
         )
         Spacer(modifier = Modifier.height(32.dp))
-        AtomButton(
+        WGButton(
             text = "WhatsGo'ya Giriş",
             iconId = R.drawable.ic_logo,
             onClick = { onClickSuccess() },
         )
-        AtomSpacer()
+        WGSpacer()
     }
 }
 

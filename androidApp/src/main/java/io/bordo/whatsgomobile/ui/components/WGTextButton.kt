@@ -1,4 +1,4 @@
-package io.bordo.whatsgomobile.ui.components.atoms
+package io.bordo.whatsgomobile.ui.components
 
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
@@ -8,14 +8,14 @@ import io.bordo.whatsgomobile.ui.theme.BlackMain
 
 
 @Composable
-fun AtomTextButton(
+fun WGTextButton(
     text: String,
     color: Color = BlackMain,
     fontWeight: FontWeight = FontWeight.Bold,
     onClick: () -> Unit
 ) {
     TextButton(onClick = onClick) {
-        AtomText(
+        WGText(
             text = text,
             fontWeight = fontWeight
         )

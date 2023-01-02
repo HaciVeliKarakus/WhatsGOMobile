@@ -1,15 +1,14 @@
-package io.bordo.whatsgomobile.ui.components.widgets
+package io.bordo.whatsgomobile.ui.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import io.bordo.whatsgomobile.ui.components.atoms.AtomLinearProgressIndicator
 
 
 @Composable
-fun WidgetDelegateStatistic(
+fun WGDelegateStatistic(
     name: String,
     progress: Float
 ) {
@@ -19,7 +18,7 @@ fun WidgetDelegateStatistic(
             text = name,
             modifier = Modifier.requiredWidth(150.dp)
         )
-        AtomLinearProgressIndicator(progress = progress)
+        WGLinearProgressIndicator(progress = progress)
     }
 }
 

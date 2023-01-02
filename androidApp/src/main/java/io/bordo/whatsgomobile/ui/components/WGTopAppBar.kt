@@ -1,4 +1,4 @@
-package io.bordo.whatsgomobile.ui.components.widgets
+package io.bordo.whatsgomobile.ui.components
 
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun BackSection(
+fun WGTopAppBar(
     topSpacer: Dp = 24.dp,
     iconHorizontalPadding: Dp = 24.dp,
     backgroundColor: Color = MaterialTheme.colors.background,
@@ -48,7 +48,7 @@ fun BackSection(
 @Preview
 @Composable
 private fun Preview(){
-    BackSection() {
+    WGTopAppBar() {
         
     }
 }

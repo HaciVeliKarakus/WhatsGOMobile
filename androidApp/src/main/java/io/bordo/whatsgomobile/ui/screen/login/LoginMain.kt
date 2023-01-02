@@ -5,8 +5,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
@@ -14,9 +12,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.bordo.whatsgomobile.R
-import io.bordo.whatsgomobile.ui.components.atoms.*
-import io.bordo.whatsgomobile.ui.components.widgets.WidgetEmailBox
-import io.bordo.whatsgomobile.ui.components.widgets.WidgetPasswordBox
+import io.bordo.whatsgomobile.ui.components.*
+import io.bordo.whatsgomobile.ui.components.WGEmailBox
+import io.bordo.whatsgomobile.ui.components.WGPasswordBox
 import io.bordo.whatsgomobile.ui.theme.whatsappGreen
 
 
@@ -34,18 +32,18 @@ fun LoginPage(
                 .padding(it)
         ) {
             item {
-                AtomImage(id = R.drawable.logo_name_main)
-                AtomSpacer(height = 32.dp)
+                WGImage(id = R.drawable.logo_name_main)
+                WGSpacer(height = 32.dp)
             }
             item {
-                AtomButton(
+                WGButton(
                     text = "Whatsapp ile Giriş",
                     iconId = R.drawable.ic_whatsapp_24,
                     backColor = whatsappGreen,
                     onClick = {}
                 )
-                AtomSpacer()
-                AtomButton(
+                WGSpacer()
+                WGButton(
                     text = "Google ile Giriş",
                     iconId = R.drawable.ic_google,
                     textColor = Color.Black,
@@ -54,22 +52,22 @@ fun LoginPage(
                 )
             }
             item {
-                AtomSpacer(height = 26.dp)
-                AtomDivider(centerText = "VEYA")
-                AtomSpacer(height = 26.dp)
+                WGSpacer(height = 26.dp)
+                WGDivider(centerText = "VEYA")
+                WGSpacer(height = 26.dp)
             }
             item {
-                WidgetEmailBox(hintText = "Mail Adresiniz")
-                AtomSpacer()
-                WidgetPasswordBox(hintText = "Şifreniz")
-                AtomSpacer()
+                WGEmailBox(hintText = "Mail Adresiniz")
+                WGSpacer()
+                WGPasswordBox(hintText = "Şifreniz")
+                WGSpacer()
             }
             item {
-                AtomButton(
+                WGButton(
                     text = "Giriş Yap",
                     onClick = { onLoginClick() }
                 )
-                AtomTextButton(
+                WGTextButton(
                     text = "Şifremi Unuttum",
                     onClick = onForgetClick
                 )

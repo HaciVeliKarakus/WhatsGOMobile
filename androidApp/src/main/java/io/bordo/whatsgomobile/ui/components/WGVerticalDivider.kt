@@ -1,4 +1,4 @@
-package io.bordo.whatsgomobile.ui.components.atoms
+package io.bordo.whatsgomobile.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 
 
 @Composable
-fun AtomVerticalDivider(
+fun WGVerticalDivider(
     color: Color = MaterialTheme.colors.onSurface.copy(alpha = 0.12f),
     thickness: Dp = 1.dp,
     height: Dp = 20.dp
@@ -30,6 +30,6 @@ fun AtomVerticalDivider(
 
 @Preview
 @Composable
-private fun PreviewAtomVerticalDivider() {
-    AtomVerticalDivider()
+private fun Preview() {
+    WGVerticalDivider()
 }

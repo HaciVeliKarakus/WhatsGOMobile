@@ -1,4 +1,4 @@
-package io.bordo.whatsgomobile.ui.components.widgets
+package io.bordo.whatsgomobile.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -19,9 +19,8 @@ import io.bordo.whatsgomobile.ui.theme.primaryColor
 
 import kotlin.random.Random
 
-@Preview
 @Composable
-fun WidgetRadioGroup() {
+fun WGRadioGroup() {
     val options = listOf(
         "bekleyen",
         "yeni",
@@ -91,3 +90,8 @@ fun WidgetRadioGroup() {
 
 }
 
+@Preview(showBackground = true)
+@Composable
+private fun Preview() {
+    WGRadioGroup()
+}

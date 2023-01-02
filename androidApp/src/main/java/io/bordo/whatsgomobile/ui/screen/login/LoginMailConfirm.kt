@@ -12,11 +12,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import io.bordo.whatsgomobile.ui.components.atoms.AtomButton
-import io.bordo.whatsgomobile.ui.components.atoms.AtomSpacer
-import io.bordo.whatsgomobile.ui.components.atoms.AtomText
-import io.bordo.whatsgomobile.ui.components.widgets.BackSection
-import io.bordo.whatsgomobile.ui.components.widgets.WidgetEmailBox
+import io.bordo.whatsgomobile.ui.components.WGButton
+import io.bordo.whatsgomobile.ui.components.WGSpacer
+import io.bordo.whatsgomobile.ui.components.WGText
+import io.bordo.whatsgomobile.ui.components.WGTopAppBar
+import io.bordo.whatsgomobile.ui.components.WGEmailBox
 import io.bordo.whatsgomobile.ui.theme.GrayMain
 
 
@@ -26,7 +26,7 @@ fun MailConfirm(
     onConfirmClick: () -> Unit
 ) {
     Scaffold(
-        topBar = { BackSection(onBackClick = onBackClick) }
+        topBar = { WGTopAppBar(onBackClick = onBackClick) }
     ) {
         LazyColumn(
             modifier = Modifier
@@ -36,31 +36,31 @@ fun MailConfirm(
         ) {
             item {
                 Column(modifier = Modifier.padding(horizontal = 24.dp)) {
-                    AtomText(
+                    WGText(
                         text = "Şifremi Unuttum",
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Bold,
                     )
-                    AtomSpacer()
-                    AtomText(
+                    WGSpacer()
+                    WGText(
                         text = "E-posta adresinizi aşağıya yazın, size şifrenizi sıfırlamanız için bir bağlantı göndereceğiz.",
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Medium,
                         color = GrayMain,
                     )
-                    AtomSpacer(height = 24.dp)
+                    WGSpacer(height = 24.dp)
                 }
             }
             item {
-                WidgetEmailBox(hintText = "Mail adresi")
-                AtomSpacer()
+                WGEmailBox(hintText = "Mail adresi")
+                WGSpacer()
             }
             item {
-                AtomButton(
+                WGButton(
                     text = "Devam Et",
                     onClick = { onConfirmClick() },
                 )
-                AtomSpacer()
+                WGSpacer()
             }
         }
     }

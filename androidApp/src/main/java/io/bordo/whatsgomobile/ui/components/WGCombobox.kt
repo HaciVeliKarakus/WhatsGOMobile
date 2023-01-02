@@ -1,4 +1,4 @@
-package io.bordo.whatsgomobile.ui.components.widgets
+package io.bordo.whatsgomobile.ui.components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.width
@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 @OptIn(ExperimentalMaterialApi::class)
-fun WidgetCombobox() {
+fun WGCombobox() {
     val options = listOf("Tümü", "Çevrimiçi", "Çevrimdışı")
     var expanded by remember { mutableStateOf(false) }
     var selectedOptionText by remember { mutableStateOf(options[0]) }
@@ -55,6 +55,6 @@ fun WidgetCombobox() {
 @Composable
 private fun Preview() {
     Row {
-        WidgetCombobox()
+        WGCombobox()
     }
 }

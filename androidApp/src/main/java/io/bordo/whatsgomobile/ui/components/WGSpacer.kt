@@ -1,4 +1,4 @@
-package io.bordo.whatsgomobile.ui.components.atoms
+package io.bordo.whatsgomobile.ui.components
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -11,7 +11,7 @@ import androidx.compose.ui.unit.dp
 
 
 @Composable
-fun AtomSpacer(height: Dp = 16.dp, width: Dp = 0.dp) {
+fun WGSpacer(height: Dp = 16.dp, width: Dp = 0.dp) {
     Spacer(
         modifier = Modifier
             .height(height = height)
@@ -23,5 +23,5 @@ fun AtomSpacer(height: Dp = 16.dp, width: Dp = 0.dp) {
 @Preview
 @Composable
 private fun AtomSpacerPreview() {
-    AtomSpacer(height = 16.dp, width = 16.dp)
+    WGSpacer(height = 16.dp, width = 16.dp)
 }

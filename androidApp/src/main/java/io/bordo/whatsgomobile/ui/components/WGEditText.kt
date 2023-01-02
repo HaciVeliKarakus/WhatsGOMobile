@@ -1,4 +1,4 @@
-package io.bordo.whatsgomobile.ui.components.atoms
+package io.bordo.whatsgomobile.ui.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
@@ -15,7 +15,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextRange
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
@@ -25,7 +24,7 @@ import io.bordo.whatsgomobile.ui.theme.GrayFrame
 import io.bordo.whatsgomobile.ui.theme.GrayMain
 
 @Composable
-fun AtomEditText(
+fun WGEditText(
     textFieldState: MutableState<TextFieldValue>,
     cornerRadius: Dp = 12.dp,
     horizontalPadding: Dp = 24.dp,
@@ -44,7 +43,7 @@ fun AtomEditText(
         visualTransformation = visualTransformation,
         label = {
             hintText?.let {
-                AtomText(
+                WGText(
                     text = it,
                     color = hintTextColor
                 )

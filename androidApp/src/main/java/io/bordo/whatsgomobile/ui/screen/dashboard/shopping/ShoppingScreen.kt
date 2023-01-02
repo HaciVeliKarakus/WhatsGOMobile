@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import io.bordo.common.domain.model.Player
 import io.bordo.whatsgomobile.R
-import io.bordo.whatsgomobile.ui.components.atoms.AtomVerticalDivider
+import io.bordo.whatsgomobile.ui.components.WGVerticalDivider
 import io.bordo.whatsgomobile.ui.theme.primaryColor
 import io.bordo.whatsgomobile.ui.viewmodel.player.PlayerViewModel
 import org.koin.androidx.compose.koinViewModel
@@ -111,7 +111,7 @@ fun TotalMonitorSection() {
             Text(text = "123", fontSize = 20.sp, fontWeight = FontWeight.Bold)
             Text(text = "Sipariş")
         }
-        AtomVerticalDivider()
+        WGVerticalDivider()
         Column(
             modifier = Modifier.weight(1f),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -119,7 +119,7 @@ fun TotalMonitorSection() {
             Text(text = "98", fontSize = 20.sp, fontWeight = FontWeight.Bold)
             Text(text = "Müşteri")
         }
-        AtomVerticalDivider()
+        WGVerticalDivider()
         Column(
             modifier = Modifier.weight(1f),
             horizontalAlignment = Alignment.CenterHorizontally

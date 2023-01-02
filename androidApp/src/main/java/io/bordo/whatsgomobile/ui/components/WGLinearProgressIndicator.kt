@@ -1,4 +1,4 @@
-package io.bordo.whatsgomobile.ui.components.atoms
+package io.bordo.whatsgomobile.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import io.bordo.whatsgomobile.ui.theme.BarPink
 
 @Composable
-fun AtomLinearProgressIndicator(
+fun WGLinearProgressIndicator(
     modifier: Modifier = Modifier,
     progress: Float,
     progressColor: Color = BarPink,
@@ -42,5 +42,5 @@ fun AtomLinearProgressIndicator(
 @Preview
 @Composable
 fun PreviewAtomLinearProgressIndicator() {
-    AtomLinearProgressIndicator(progress = 0.5f)
+    WGLinearProgressIndicator(progress = 0.5f)
 }

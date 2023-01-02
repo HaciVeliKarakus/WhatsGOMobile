@@ -1,4 +1,4 @@
-package io.bordo.whatsgomobile.ui.components.atoms
+package io.bordo.whatsgomobile.ui.components
 
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily

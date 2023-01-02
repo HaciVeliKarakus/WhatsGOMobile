@@ -1,4 +1,4 @@
-package io.bordo.whatsgomobile.ui.components.widgets
+package io.bordo.whatsgomobile.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -9,12 +9,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.bordo.whatsgomobile.ui.theme.BarPink
 
 
 @Composable
-fun WidgetSurvey(
+fun WGSurvey(
     text: String,
     value: Int
 ) {
@@ -48,4 +49,10 @@ fun WidgetSurvey(
 //                .padding(end = 16.dp)
         )
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun Preview(){
+    WGSurvey(text = "preview", value = 5)
 }
