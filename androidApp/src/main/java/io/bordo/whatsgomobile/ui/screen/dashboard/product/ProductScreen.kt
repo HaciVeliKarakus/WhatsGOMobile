@@ -49,7 +49,7 @@ import org.koin.androidx.compose.koinViewModel
 fun ProductScreen() {
     val viewModel: PlayerViewModel = koinViewModel()
     val playerList = viewModel.state.value.playerList
-    
+
     Scaffold(
         topBar = {
             ShoppingTopSection()
@@ -162,7 +162,6 @@ fun ProductContentSection(player: Player) {
 //    )
 //}
 
-@Preview
 @Composable
 fun Switch2(
     scale: Float = 1f,
@@ -242,9 +241,7 @@ fun ProductStatusSwitch() {
         // it updates mCheckedState value
         Switch(
             checked = mCheckedState.value,
-            onCheckedChange = {
-                mCheckedState.value = it
-            }
+            onCheckedChange = { mCheckedState.value = it }
         )
 
         // Adding a Space of 100dp height
@@ -352,4 +349,11 @@ fun CustomChip(
             modifier = Modifier.padding(8.dp)
         )
     }
+}
+
+
+@Preview(showBackground = true)
+@Composable
+private fun Preview() {
+    ProductScreen()
 }

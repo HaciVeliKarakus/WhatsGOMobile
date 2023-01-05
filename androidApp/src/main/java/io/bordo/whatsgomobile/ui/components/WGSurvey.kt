@@ -11,13 +11,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import io.bordo.whatsgomobile.ui.theme.BarPink
+import io.bordo.whatsgomobile.ui.theme.YellowMinus80
 
 
 @Composable
 fun WGSurvey(
     text: String,
-    value: Int
+    value: Int,
+    backgroundColor: Color
 ) {
     Box(
         modifier = Modifier
@@ -28,7 +29,7 @@ fun WGSurvey(
     ) {
         Box(
             modifier = Modifier
-                .background(BarPink)
+                .background(backgroundColor)
                 .fillMaxHeight()
                 .fillMaxWidth(value.toFloat() / 100)
                 .clip(RoundedCornerShape(10.dp))
@@ -53,6 +54,6 @@ fun WGSurvey(
 
 @Preview(showBackground = true)
 @Composable
-private fun Preview(){
-    WGSurvey(text = "preview", value = 5)
+private fun Preview() {
+    WGSurvey(text = "preview", value = 5, backgroundColor = YellowMinus80)
 }

@@ -1,4 +1,4 @@
-package io.bordo.whatsgomobile.ui.navigation
+package io.bordo.whatsgomobile.navigation
 
 sealed class Screen(val route: String) {
 

@@ -26,7 +26,7 @@ private val LightColorPalette = lightColors(
     primaryVariant = maroon700,
     secondary = teal200,
     secondaryVariant = teal700,
-    background = GrayBackground,
+    background = WhiteMain,
     surface = WhiteMain,
     error = red,
     onPrimary = white,
@@ -41,7 +41,7 @@ fun WhatsGOMobileTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val colors = if (darkTheme) DarkColorPalette else LightColorPalette
+    val colors = if (darkTheme) LightColorPalette else LightColorPalette
 
     MaterialTheme(colors = colors, content = content)
 }

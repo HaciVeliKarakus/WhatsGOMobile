@@ -1,61 +1,56 @@
 package io.bordo.whatsgomobile.ui.components
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import io.bordo.whatsgomobile.data.InfoPack
-import io.bordo.whatsgomobile.ui.theme.GrayFrame
 import io.bordo.whatsgomobile.R
+import io.bordo.whatsgomobile.data.MessagePanelModel
 
 @Composable
 fun WGMessagePanel(
-    headerText: String = "Mesajlar",
-    waitingMessageInfo: InfoPack,
-    activeMessageInfo: InfoPack,
-    newMessageInfo: InfoPack,
-    doneMessageInfo: InfoPack
+    messagePanelModel: MessagePanelModel
 ) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(all = 10.dp),
-        elevation = 0.dp,
-        shape = RoundedCornerShape(size = 10.dp),
-        border = BorderStroke(width = 1.dp, color = GrayFrame)
-    ) {
-        Column(
+    WGCard {
+        WGText(
+            text = "Mesajlar",
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Bold,
+        )
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(10.dp)
+                .padding(vertical = 10.dp),
+            horizontalArrangement = Arrangement.SpaceAround
         ) {
-            WGText(
-                text = headerText,
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Bold,
-            )
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 10.dp),
-                horizontalArrangement = Arrangement.SpaceAround
-            ) {
-                Column {
-                    WGInfoModule(waitingMessageInfo)
-                    WGSpacer()
-                    WGInfoModule(newMessageInfo)
-                }
-                Column {
-                    WGInfoModule(activeMessageInfo)
-                    WGSpacer()
-                    WGInfoModule(doneMessageInfo)
-                }
+            Column {
+                WGInfoModule(
+                    imageId = R.drawable.waiting,
+                    title = "Bekleyen",
+                    value = messagePanelModel.waitingMessageCount
+                )
+                WGSpacer()
+                WGInfoModule(
+                    imageId = R.drawable.resource_new,
+                    title = "Yeni",
+                    value = messagePanelModel.newMessageCount
+                )
+            }
+            Column {
+                WGInfoModule(
+                    imageId = R.drawable.active,
+                    title = "Aktif",
+                    value = messagePanelModel.activeMessageCount
+                )
+                WGSpacer()
+                WGInfoModule(
+                    imageId = R.drawable.completed,
+                    title = "Sonlanan",
+                    value = messagePanelModel.terminatedMessageCount
+                )
             }
         }
     }
@@ -66,9 +61,6 @@ fun WGMessagePanel(
 @Composable
 private fun Preview() {
     WGMessagePanel(
-        waitingMessageInfo = InfoPack(imageId = R.drawable.resource_new),
-        activeMessageInfo = InfoPack(imageId = R.drawable.resource_new),
-        newMessageInfo = InfoPack(imageId = R.drawable.resource_new),
-        doneMessageInfo = InfoPack(imageId = R.drawable.resource_new)
+        messagePanelModel = MessagePanelModel()
     )
 }

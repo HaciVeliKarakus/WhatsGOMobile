@@ -2,41 +2,56 @@ package io.bordo.whatsgomobile.ui.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
-import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import io.bordo.whatsgomobile.R
-import io.bordo.whatsgomobile.data.InfoPack
+import io.bordo.whatsgomobile.data.types.InfoModuleType
 
 @Composable
 fun WGInfoModule(
-    infoPack: InfoPack,
-    spaceBetweenImageAndText: Dp = 10.dp
+    imageId: Int? = null,
+    value: String,
+    title: String,
+    type: InfoModuleType = InfoModuleType.Vertical,
+    spaceBetweenImageAndText: Dp = 16.dp
 ) {
-    var isNeedSpace by remember { mutableStateOf(false) }
-    Row {
+    var isNeedSpace = false
 
-        infoPack.imageId?.let {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+
+        imageId?.let {
             WGImage(id = it)
             isNeedSpace = !isNeedSpace
         }
+        WGSpacer(width = if (isNeedSpace) spaceBetweenImageAndText else 0.dp)
 
-        Column(
-            modifier = Modifier.padding(
-                horizontal = if (isNeedSpace) spaceBetweenImageAndText else 0.dp
-            )
-        ) {
-            WGText(
-                text = infoPack.value.toString(),
-                fontWeight = FontWeight.Bold,
-                fontSize = 20.sp
-            )
-            WGText(text = infoPack.title)
+        when (type) {
+            InfoModuleType.Vertical -> Column(
+
+            ) {
+                WGText(
+                    text = value,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp
+                )
+                WGText(text = title)
+            }
+            InfoModuleType.Horizontal -> Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                WGText(
+                    text = value,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 16.sp
+                )
+                WGSpacer(width = 8.dp)
+                WGText(text = title)
+            }
         }
     }
 }
@@ -45,10 +60,9 @@ fun WGInfoModule(
 @Composable
 private fun Preview() {
     WGInfoModule(
-        InfoPack(
-            imageId = R.drawable.completed,
-            value = "0",
-            title = "preview"
-        )
+        imageId = R.drawable.completed,
+        value = "42",
+        title = "Preview",
+        type = InfoModuleType.Horizontal
     )
 }

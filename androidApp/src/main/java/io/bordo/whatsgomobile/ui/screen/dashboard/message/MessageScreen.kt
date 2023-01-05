@@ -1,7 +1,5 @@
 package io.bordo.whatsgomobile.ui.screen.dashboard.message
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -16,7 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavDestination
@@ -25,13 +23,16 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.google.accompanist.pager.*
 import io.bordo.whatsgomobile.R
-import io.bordo.whatsgomobile.ui.navigation.MessageTopBarScreen
-import io.bordo.whatsgomobile.ui.screen.dashboard.message.tabs.newmessage.NewMessageScreen
+import io.bordo.whatsgomobile.extentions.drawVerticalDotLine
+import io.bordo.whatsgomobile.extentions.tabCircleController
+import io.bordo.whatsgomobile.navigation.MessageTopBarScreen
+import io.bordo.whatsgomobile.ui.components.WGText
+import io.bordo.whatsgomobile.ui.components.WGTopSection
 import io.bordo.whatsgomobile.ui.screen.dashboard.message.tabs.active.ActiveMessageScreen
 import io.bordo.whatsgomobile.ui.screen.dashboard.message.tabs.groups.GroupMessageScreen
+import io.bordo.whatsgomobile.ui.screen.dashboard.message.tabs.newmessage.NewMessageScreen
 import io.bordo.whatsgomobile.ui.screen.dashboard.message.tabs.waiting.WaitingMessageScreen
 import io.bordo.whatsgomobile.ui.theme.primaryColor
-
 import kotlinx.coroutines.launch
 
 
@@ -41,13 +42,14 @@ fun MessageScreen(
     onMessageSelected: (messageId: Int) -> Unit
 ) {
     val pagerState = rememberPagerState()
-    Column {
-        MessageTopSection()
-        Tabs(pagerState = pagerState)
-        TabsContent(
-            pagerState = pagerState,
-            onMessageSelected = onMessageSelected
-        )
+    Scaffold(topBar = { WGTopSection(headerText = "Mesajlar") }) {
+        Column(modifier = Modifier.padding(it)) {
+//            MessageTopSection()
+            Tabs(pagerState = pagerState)
+            TabsContent(
+                pagerState = pagerState, onMessageSelected = onMessageSelected
+            )
+        }
     }
 }
 
@@ -55,8 +57,7 @@ fun MessageScreen(
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun TabsContent(
-    pagerState: PagerState,
-    onMessageSelected: (messageId: Int) -> Unit
+    pagerState: PagerState, onMessageSelected: (messageId: Int) -> Unit
 ) {
     HorizontalPager(count = 4, state = pagerState) { page ->
         when (page) {
@@ -100,24 +101,30 @@ fun Tabs(pagerState: PagerState) {
     TabRow(selectedTabIndex = pagerState.currentPage,
 //        contentColor = Color.White,
         backgroundColor = if (isSystemInDarkTheme()) Color.Black else Color.White,
-        indicator = { tabPositions ->
-            TabRowDefaults.Indicator(
-                Modifier.pagerTabIndicatorOffset(pagerState, tabPositions),
-                height = 3.dp,
-                color = primaryColor
-            )
-        }) {
+        indicator = {
+//            TabRowDefaults.Indicator(
+//                Modifier.pagerTabIndicatorOffset(pagerState, it),
+//                height = 3.dp,
+//                color = primaryColor
+//            )
+        },
+        divider = {}
+    ) {
         list.forEachIndexed { index, _ ->
-            Tab(
-                modifier = Modifier.height(80.dp), icon = {
+            Tab(modifier = Modifier
+                .height(80.dp)
+                .drawVerticalDotLine()
+//                .dashedBorder()
+                ,
+                icon = {
                     val borderSize = 35.dp
                     Box(
                         contentAlignment = Alignment.Center,
-                        modifier = tabCircleController(pagerState, index, borderSize)
+                        modifier = Modifier.tabCircleController(pagerState, index, borderSize)
                     ) {
-                        Text(
-                            fontSize = 12.sp,
-                            text = "1",
+                        WGText(
+                            text = "15",
+                            fontWeight = FontWeight.Bold,
                             color = textColorController(pagerState, index),
                             textAlign = TextAlign.Center,
                         )
@@ -133,32 +140,15 @@ fun Tabs(pagerState: PagerState) {
                     scope.launch {
                         pagerState.animateScrollToPage(index)
                     }
-                }
-            )
+                })
         }
     }
 }
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-private fun tabCircleController(
-    pagerState: PagerState,
-    index: Int, borderSize: Dp
-) = if (pagerState.currentPage == index) Modifier
-    .clip(shape = CircleShape)
-    .size(borderSize)
-    .border(1.dp, color = primaryColor, shape = CircleShape)
-    .background(Color.Transparent)
-else Modifier
-    .clip(shape = CircleShape)
-    .size(borderSize)
-    .background(Color.LightGray)
-
-@OptIn(ExperimentalPagerApi::class)
-@Composable
-private fun textColorController(
-    pagerState: PagerState,
-    index: Int
+fun textColorController(
+    pagerState: PagerState, index: Int
 ) = if (pagerState.currentPage == index) primaryColor else Color.Black
 
 
@@ -313,4 +303,11 @@ fun MessagePart() {
 //            }
 //        }
     }
+}
+
+
+@Preview(showBackground = true)
+@Composable
+private fun Preview() {
+    MessageScreen(onMessageSelected = {})
 }

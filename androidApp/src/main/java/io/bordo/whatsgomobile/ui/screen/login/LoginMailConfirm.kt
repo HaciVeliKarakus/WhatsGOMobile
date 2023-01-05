@@ -17,6 +17,7 @@ import io.bordo.whatsgomobile.ui.components.WGSpacer
 import io.bordo.whatsgomobile.ui.components.WGText
 import io.bordo.whatsgomobile.ui.components.WGTopAppBar
 import io.bordo.whatsgomobile.ui.components.WGEmailBox
+import io.bordo.whatsgomobile.ui.theme.GrayBackground
 import io.bordo.whatsgomobile.ui.theme.GrayMain
 
 
@@ -26,7 +27,8 @@ fun MailConfirm(
     onConfirmClick: () -> Unit
 ) {
     Scaffold(
-        topBar = { WGTopAppBar(onBackClick = onBackClick) }
+        topBar = { WGTopAppBar(onBackClick = onBackClick) },
+        backgroundColor = GrayBackground
     ) {
         LazyColumn(
             modifier = Modifier

@@ -1,6 +1,7 @@
 package io.bordo.whatsgomobile.ui.components
 
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -18,7 +19,7 @@ fun WGCombobox() {
     var selectedOptionText by remember { mutableStateOf(options[0]) }
 
 //    Spacer(modifier = Modifier.Companion.weight(1f))
-    ExposedDropdownMenuBox(modifier = Modifier.width(130.dp),
+    ExposedDropdownMenuBox(modifier = Modifier.width(130.dp).height(50.dp),
         expanded = expanded,
         onExpandedChange = {
             expanded = !expanded
@@ -34,7 +35,7 @@ fun WGCombobox() {
                 )
             },
 //                        colors = ExposedDropdownMenuDefaults.textFieldColors(),
-            shape = RoundedCornerShape(20.dp)
+            shape = RoundedCornerShape(24.dp)
         )
         ExposedDropdownMenu(expanded = expanded, onDismissRequest = {
             expanded = false
@@ -44,7 +45,7 @@ fun WGCombobox() {
                     selectedOptionText = selectionOption
                     expanded = false
                 }) {
-                    Text(text = selectionOption, fontSize = 10.sp)
+                    WGText(text = selectionOption, fontSize = 10.sp)
                 }
             }
         }

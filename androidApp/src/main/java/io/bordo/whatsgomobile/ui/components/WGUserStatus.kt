@@ -1,5 +1,6 @@
 package io.bordo.whatsgomobile.ui.components
 
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
@@ -22,15 +23,15 @@ fun WGUserStatus(
     onClick: () -> Unit
 ) {
     Button(
-        modifier = Modifier.width(120.dp),
+        modifier = Modifier.width(120.dp).height(30.dp),
         onClick = onClick,
-        shape = RoundedCornerShape(20.dp),
+        shape = RoundedCornerShape(12.dp),
         colors = ButtonDefaults.buttonColors(
             backgroundColor = if (isOnline) BtnGreenLight else BtnGrayLight,
             contentColor = if (isOnline) BtnGreenDark else BtnGrayDark
         )
     ) {
-        Text(
+        WGText(
             text = if (isOnline) "Çevrimiçi" else "Çevrimdışı",
             fontSize = 10.sp
         )

@@ -76,6 +76,8 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     // To use constraintlayout in compose
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
+    implementation("com.github.jaikeerthick:Composable-Graphs:v1.1")
+//    implementation("com.github.tehras:charts:0.1.5-alpha")
 
     with(Compose) {
         implementation(compiler)

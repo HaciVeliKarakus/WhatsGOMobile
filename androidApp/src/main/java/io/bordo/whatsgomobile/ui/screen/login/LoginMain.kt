@@ -15,6 +15,7 @@ import io.bordo.whatsgomobile.R
 import io.bordo.whatsgomobile.ui.components.*
 import io.bordo.whatsgomobile.ui.components.WGEmailBox
 import io.bordo.whatsgomobile.ui.components.WGPasswordBox
+import io.bordo.whatsgomobile.ui.theme.GrayBackground
 import io.bordo.whatsgomobile.ui.theme.whatsappGreen
 
 
@@ -23,7 +24,9 @@ fun LoginPage(
     onLoginClick: () -> Unit,
     onForgetClick: () -> Unit
 ) {
-    Scaffold {
+    Scaffold(
+        backgroundColor = GrayBackground
+    ) {
         LazyColumn(
             horizontalAlignment = CenterHorizontally,
             verticalArrangement = Arrangement.Center,

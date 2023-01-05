@@ -1,4 +1,4 @@
-package io.bordo.whatsgomobile.ui.navigation
+package io.bordo.whatsgomobile.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController

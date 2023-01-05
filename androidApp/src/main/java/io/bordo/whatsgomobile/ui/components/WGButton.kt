@@ -59,7 +59,7 @@ fun WGButton(
     }
 }
 
-@Preview(showSystemUi = true, showBackground = true)
+@Preview( showBackground = true)
 @Composable
 fun PreviewAtomButton() {
     Row {
